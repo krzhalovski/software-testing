@@ -42,7 +42,7 @@ public class StudentTester {
 		for(Student s : students) {
 			for(Course c : courses) {
 				double grade = ThreadLocalRandom.current().nextInt(6,11);
-				when(gsMock.getGrade(s, c)).thenReturn(7.00);
+				when(gsMock.getGrade(s, c)).thenReturn(grade);
 			}
 		}
 	}
@@ -51,14 +51,16 @@ public class StudentTester {
 	public void testAverageStudent() {
 		
 		for(Student s : students) {
-			assertTrue(s.calculateAverageGrade() == 7.00);
+			System.out.println(s.calculateAverageGrade());
+			assertTrue(s.calculateAverageGrade()>=6 && s.calculateAverageGrade()<=10);
 		}
 	}
 	
 	@Test
 	public void testAverageCourse() {
 		for(Course c : courses) {
-			assertTrue(c.getAverageGrade() == 7.00);
+			System.out.println(c.getAverageGrade());
+			assertTrue(c.getAverageGrade() >= 6 && c.getAverageGrade() <= 10);
 		}
 	}
 }
